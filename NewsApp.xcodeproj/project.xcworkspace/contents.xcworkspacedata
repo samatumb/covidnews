@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AppleNews.xcodeproj">
+      location = "self:/Users/somfish/Desktop/AppleNews/NewsApp.xcodeproj">
    </FileRef>
 </Workspace>
