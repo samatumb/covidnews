@@ -24,9 +24,9 @@ class TopNewsVC: DataLoadingVC {
     var dataSource: UICollectionViewDiffableDataSource<Section, NewsItem>!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentAlertOnMainThread(title: "Top News", message: "News automatically updated every 5 seconds\nTo go to the next page, scroll down after the bottom", buttonTitle: "Ok")
         configureViewController()
         configureCollectionView()
         getNews()
@@ -42,9 +42,13 @@ class TopNewsVC: DataLoadingVC {
         isTimerActive = true
     }
     
+    
     func configureViewController() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor                = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        let image                           = SFSymbols.update
+        let updateButton                    = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(updateButtonTapped))
+        navigationItem.rightBarButtonItem   = updateButton
     }
     
     
@@ -73,6 +77,7 @@ class TopNewsVC: DataLoadingVC {
         isLoading = false
     }
     
+    
     func getNewsByTimer() {
         
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self] timer in
@@ -94,6 +99,7 @@ class TopNewsVC: DataLoadingVC {
         
     }
     
+    
     func updateUI(with articles: [NewsItem]) {
         if articles.count < pageSize { hasMoreArticles = false }
         news.append(contentsOf: articles)
@@ -106,10 +112,12 @@ class TopNewsVC: DataLoadingVC {
         self.updateData(on: news)
     }
     
+    
     func showEmptyState() {
         let message = "No Top news about Covid today 😀"
         DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
     }
+    
     
     func updateUIByTimer(with articles: [NewsItem]) {
         if articles.isEmpty { return }
@@ -122,6 +130,7 @@ class TopNewsVC: DataLoadingVC {
             }
         }
     }
+    
     
     func updateData(on news: [NewsItem]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, NewsItem>()
@@ -139,7 +148,12 @@ class TopNewsVC: DataLoadingVC {
         })
     }
     
-    
+    @objc func updateButtonTapped() {
+        news = []
+        page = 1
+        hasMoreArticles = true
+        getNews()
+    }
     
 }
 

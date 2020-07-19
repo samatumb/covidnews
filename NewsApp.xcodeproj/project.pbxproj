@@ -40,7 +40,7 @@
 		1809C51924C1B44100DB9A1F /* DetailNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsVC.swift; sourceTree = "<group>"; };
 		1809C51B24C1B68F00DB9A1F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		1809C51D24C1C2CE00DB9A1F /* ArticleBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBodyLabel.swift; sourceTree = "<group>"; };
-		1829CFB024C053AC001295C4 /* Covid-19 News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid-19 News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1829CFB024C053AC001295C4 /* Covid News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1829CFB324C053AC001295C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1829CFB524C053AC001295C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1829CFBC24C053B0001295C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		1829CFB124C053AC001295C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1829CFB024C053AC001295C4 /* Covid-19 News.app */,
+				1829CFB024C053AC001295C4 /* Covid News.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			);
 			name = NewsApp;
 			productName = AppleNews;
-			productReference = 1829CFB024C053AC001295C4 /* Covid-19 News.app */;
+			productReference = 1829CFB024C053AC001295C4 /* Covid News.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -432,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = somfish.NewsApp;
-				PRODUCT_NAME = "Covid-19 News";
+				PRODUCT_NAME = "Covid News";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -450,7 +450,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = somfish.NewsApp;
-				PRODUCT_NAME = "Covid-19 News";
+				PRODUCT_NAME = "Covid News";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

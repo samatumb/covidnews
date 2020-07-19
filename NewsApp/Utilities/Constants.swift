@@ -9,25 +9,26 @@
 import UIKit
 
 enum Images {
-    static let placeholder    = UIImage(named: "article-placeholder")
-    static let emptyStateLogo = UIImage(named: "empty-state-logo")
+    static let placeholder      = UIImage(named: "article-placeholder")
+    static let emptyStateLogo   = UIImage(named: "empty-state-logo")
 }
 
 enum Colors {
-    static let accent = UIColor.systemPink
+    static let accent           = UIColor.systemPink
 }
 
 enum SFSymbols {
-    static let top = (
+    static let top              = (
         UIImage(systemName: "star"),
         UIImage(systemName: "star.fill")
     )
-    static let all = (
+    static let all              = (
         UIImage(systemName: "rectangle.grid.2x2"),
         UIImage(systemName: "rectangle.grid.2x2.fill")
     )
-    static let saved = (
+    static let saved            = (
         UIImage(systemName: "bookmark"),
         UIImage(systemName: "bookmark.fill")
     )
+    static let update           = UIImage(systemName: "arrow.2.circlepath")
 }

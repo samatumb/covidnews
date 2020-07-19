@@ -33,7 +33,7 @@ class DetailNewsVC: UIViewController {
     func configureViewControllers() {
         view.backgroundColor = .systemBackground
         
-        let image            = UIImage(systemName: "bookmark")
+        let image            = SFSymbols.saved.0
         let saveButton       = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveButton
     }

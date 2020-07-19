@@ -14,7 +14,6 @@ struct ResponseObject: Codable {
     var articles: [NewsItem]
 }
 struct NewsItem: Codable, Hashable {
-    
     var title: String
     var url: String
     var urlToImage: String?

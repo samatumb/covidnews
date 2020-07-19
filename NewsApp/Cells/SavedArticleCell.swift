@@ -10,9 +10,9 @@ import UIKit
 
 class SavedArticleCell: UITableViewCell {
     
-    static let reuseID  = "SavedArticleCell"
-    let articleImageView = ArticleImageView(isRounded: true)
-    let articleLabel   = ArticleTitleLabel(textAlignment: .left, fontSize: 26)
+    static let reuseID      = "SavedArticleCell"
+    let articleImageView    = ArticleImageView(isRounded: true)
+    let articleLabel        = ArticleTitleLabel(textAlignment: .left, fontSize: 20)
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,10 +27,8 @@ class SavedArticleCell: UITableViewCell {
     
     
     func set(article: NewsItem) {
-        if let url = article.urlToImage {
-            articleImageView.downloadImage(fromURL: url)
-        }
-        articleLabel.text = article.title
+        if let url          = article.urlToImage { articleImageView.downloadImage(fromURL: url) }
+        articleLabel.text   = article.title
     }
     
     
@@ -46,9 +44,9 @@ class SavedArticleCell: UITableViewCell {
             articleImageView.widthAnchor.constraint(equalToConstant: 60),
             
             articleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            articleLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 24),
+            articleLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: padding),
             articleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            articleLabel.heightAnchor.constraint(equalToConstant: 40)
+            articleLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }

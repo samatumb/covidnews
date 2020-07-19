@@ -9,6 +9,7 @@
 import UIKit
 
 class AllNewsVC: DataLoadingVC {
+    
     enum Section { case main }
     
     var news: [NewsItem] = []
@@ -21,10 +22,9 @@ class AllNewsVC: DataLoadingVC {
     var dataSource: UICollectionViewDiffableDataSource<Section, NewsItem>!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentAlertOnMainThread(title: "All News", message: "Pull down to update News\nTo go to the next page, scroll down after the bottom", buttonTitle: "Ok")
         configureViewController()
         configureCollectionView()
         getNews()
@@ -33,8 +33,11 @@ class AllNewsVC: DataLoadingVC {
     
     
     func configureViewController() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor                = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        let image                           = SFSymbols.update
+        let updateButton                    = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(updateButtonTapped))
+        navigationItem.rightBarButtonItem   = updateButton
     }
     
     
@@ -64,6 +67,7 @@ class AllNewsVC: DataLoadingVC {
         isLoading = false
     }
     
+    
     func getNewsBySwipe() {
         showLoadingView()
         isLoading = true
@@ -81,6 +85,7 @@ class AllNewsVC: DataLoadingVC {
         isLoading = false
     }
     
+    
     func updateUI(with articles: [NewsItem]) {
         if articles.count < pageSize { hasMoreArticles = false }
         news.append(contentsOf: articles)
@@ -92,6 +97,7 @@ class AllNewsVC: DataLoadingVC {
         
         self.updateData(on: news)
     }
+    
     
     func updateUIBySwipe(with articles: [NewsItem]) {
         if articles.isEmpty { return }
@@ -105,6 +111,7 @@ class AllNewsVC: DataLoadingVC {
         }
     }
     
+    
     func updateData(on news: [NewsItem]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, NewsItem>()
         snapshot.appendSections([.main])
@@ -112,10 +119,12 @@ class AllNewsVC: DataLoadingVC {
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
     
+    
     func showEmptyState() {
         let message = "No any news about Covid today 😀"
         DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
     }
+    
     
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, NewsItem>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, article) -> UICollectionViewCell? in
@@ -126,7 +135,12 @@ class AllNewsVC: DataLoadingVC {
     }
     
     
-    
+    @objc func updateButtonTapped() {
+        news = []
+        page = 1
+        hasMoreArticles = true
+        getNews()
+    }
 }
 
 
@@ -141,7 +155,6 @@ extension AllNewsVC: UICollectionViewDelegate {
     
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
         let offsetY         = scrollView.contentOffset.y
         let contentHeight   = scrollView.contentSize.height
         let height          = scrollView.frame.size.height

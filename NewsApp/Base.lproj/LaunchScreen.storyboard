@@ -22,9 +22,20 @@
                                     <constraint firstAttribute="height" constant="240" id="hgC-gv-gCb"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Samat Umb. July 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0e-H6-JJZ">
+                                <rect key="frame" x="88" y="797" width="238" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k0L-m9-g1p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="X0e-H6-JJZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="48V-WI-jvh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="X0e-H6-JJZ" secondAttribute="bottom" constant="15" id="9Jn-uV-jyy"/>
                             <constraint firstItem="Y0y-2g-JYs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Swc-N1-Sar"/>
                             <constraint firstItem="Y0y-2g-JYs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eTo-l6-fhM"/>
                         </constraints>

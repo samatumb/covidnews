@@ -11,7 +11,7 @@ import UIKit
 class ArticleImageView: UIImageView {
     
     private var isRounded = false
-    let placeholderImage    = Images.placeholder
+    let placeholderImage  = Images.placeholder
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,16 +29,17 @@ class ArticleImageView: UIImageView {
     
     
     private func configure() {
-        contentMode = isRounded ? .scaleAspectFill : .scaleAspectFill
+        contentMode             = isRounded ? .scaleAspectFill : .scaleAspectFill
         if isRounded {
             layer.cornerRadius  = 8
             layer.borderWidth   = 1
             layer.borderColor   = UIColor.gray.cgColor
         }
-        clipsToBounds       = true
-        image               = placeholderImage
+        clipsToBounds           = true
+        image                   = placeholderImage
+        backgroundColor         = UIColor.systemGray
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.systemGray
+        
         
     }
     

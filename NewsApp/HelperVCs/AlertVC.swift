@@ -83,8 +83,8 @@ class AlertVC: UIViewController {
     
     
     func configureMessageLabel() {
-        messageLabel.text = message ?? "Unable to complete request"
-        messageLabel.numberOfLines = 4
+        messageLabel.text           = message ?? "Unable to complete request"
+        messageLabel.numberOfLines  = 4
         
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
@@ -116,9 +116,9 @@ class AlertContainerView: UIView {
     
     private func configure() {
        backgroundColor       = .systemBackground
-       layer.cornerRadius    = 16
-       layer.borderWidth     = 2
-       layer.borderColor     = UIColor.white.cgColor
+       layer.cornerRadius    = 8
+       layer.borderWidth     = 1
+       layer.borderColor     = UIColor.gray.cgColor
        translatesAutoresizingMaskIntoConstraints = false
     }
 }

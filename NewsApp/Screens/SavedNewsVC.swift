@@ -16,11 +16,10 @@ class SavedNewsVC: DataLoadingVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentAlertOnMainThread(title: "Saved News", message: "Swipe Left to remove from Saved", buttonTitle: "Ok")
         configureViewController()
         configureTableView()
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,7 +63,7 @@ class SavedNewsVC: DataLoadingVC {
     
     func updateUI(with articles: [NewsItem]) {
         if articles.isEmpty {
-            self.showEmptyStateView(with: "No Saved news?\nAdd one on Top or All screens.", in: self.view)
+            self.showEmptyStateView(with: "No Saved news\nAdd one on News screen.", in: self.view)
         } else {
             self.news = articles
             DispatchQueue.main.async {

@@ -10,9 +10,9 @@ import UIKit
 
 class ArticleCell: UICollectionViewCell {
     
-    static let reuseID = "ArticleCell"
-    let articleImageView = ArticleImageView(isRounded: true)
-    let articleLabel = ArticleTitleLabel(textAlignment: .left, fontSize: 16)
+    static let reuseID      = "ArticleCell"
+    let articleImageView    = ArticleImageView(isRounded: true)
+    let articleLabel        = ArticleTitleLabel(textAlignment: .left, fontSize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,8 +25,8 @@ class ArticleCell: UICollectionViewCell {
     
     
     func set(article: NewsItem) {
-        articleLabel.text = article.title
-        guard let url = article.urlToImage else { return }
+        articleLabel.text   = article.title
+        guard let url       = article.urlToImage else { return }
         articleImageView.downloadImage(fromURL: url)
     }
     

@@ -20,7 +20,7 @@ class NetworkManager {
     //private let country = "us"
     private let category = "health"
     private let keyword = "covid"
-    private let apikey  = "e65ee0938a2a43ebb15923b48faed18d" //"e65ee0938a2a43ebb15923b48faed18d" //95474305f6064687a233dd57edb94edf
+    private let apikey  = "e65ee0938a2a43ebb15923b48faed18d" //95474305f6064687a233dd57edb94edf
     
     
     private init() {}
@@ -29,7 +29,7 @@ class NetworkManager {
         let request = baseURL + endpoint.rawValue  + "q=\(keyword)" +  "&pageSize=\(pageSize)" + "&page=\(page)" + "&apiKey=\(apikey)"
             //"country=\(country)" + + "category=\(category)"
         
-        print(request)
+        //print(request)
         guard let url = URL(string: request) else {
             completed(.failure(.invalidURL))
             return
@@ -53,6 +53,7 @@ class NetworkManager {
                 let responseObject = try decoder.decode(ResponseObject.self, from: data)
                 var object = responseObject
                 object.articles = Array(Set(object.articles))
+                object.articles.sort{ ($0.publishedAt, $0.title) > ($1.publishedAt, $1.title) }
                 completed(.success(object))
             } catch {
                 completed(.failure(.invalidData))
