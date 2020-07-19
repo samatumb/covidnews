@@ -13,7 +13,7 @@ class AllNewsVC: DataLoadingVC {
     
     var news: [NewsItem] = []
     var page = 1
-    let pageSize = 6
+    let pageSize = 15
     var hasMoreArticles = true
     var isLoading       = false
     

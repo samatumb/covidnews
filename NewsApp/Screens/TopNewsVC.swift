@@ -14,8 +14,8 @@ class TopNewsVC: DataLoadingVC {
     
     var news: [NewsItem] = []
     var page = 1
-    let pageSize = 6
-    let timeInterval = 3.0
+    let pageSize = 15
+    let timeInterval = 5.0
     var isTimerActive = true
     var hasMoreArticles = true
     var isLoading       = false

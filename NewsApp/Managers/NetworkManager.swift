@@ -18,7 +18,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL = "https://newsapi.org/v2/"
     //private let country = "us"
-    //private let category = "technology"
+    private let category = "health"
     private let keyword = "covid"
     private let apikey  = "e65ee0938a2a43ebb15923b48faed18d" //"e65ee0938a2a43ebb15923b48faed18d" //95474305f6064687a233dd57edb94edf
     
@@ -26,8 +26,8 @@ class NetworkManager {
     private init() {}
     
     func getNews(endpoint: EndPoint, pageSize: Int, page: Int, completed: @escaping (Result<ResponseObject, NewsError>) -> Void) {
-        let request = baseURL + endpoint.rawValue + "q=\(keyword)" +  "&pageSize=\(pageSize)" + "&page=\(page)" + "&apiKey=\(apikey)"
-            //"country=\(country)" + "&category=\(category)" +
+        let request = baseURL + endpoint.rawValue  + "q=\(keyword)" +  "&pageSize=\(pageSize)" + "&page=\(page)" + "&apiKey=\(apikey)"
+            //"country=\(country)" + + "category=\(category)"
         
         print(request)
         guard let url = URL(string: request) else {
@@ -51,7 +51,9 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let responseObject = try decoder.decode(ResponseObject.self, from: data)
-                completed(.success(responseObject))
+                var object = responseObject
+                object.articles = Array(Set(object.articles))
+                completed(.success(object))
             } catch {
                 completed(.failure(.invalidData))
             }
