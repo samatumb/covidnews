@@ -11,14 +11,14 @@ import UIKit
 class DetailNewsVC: UIViewController {
     
     let scrollView          = UIScrollView()
-    let contentView = UIView()
+    let contentView         = UIView()
     
-    let articleImageView = ArticleImageView(isRounded: false)
-    let articleTitle = ArticleTitleLabel(textAlignment: .left, fontSize: 16)
-    let articleBody = ArticleBodyLabel(textAlignment: .left)
-    let articleDate = ArticleTitleLabel(textAlignment: .left, fontSize: 14)
-    let articleAuthor = ArticleTitleLabel(textAlignment: .left, fontSize: 14)
-    let linkButton    = LinkButton()
+    let articleImageView    = ArticleImageView(isRounded: false)
+    let articleTitle        = ArticleTitleLabel(textAlignment: .left, fontSize: 16)
+    let articleBody         = ArticleBodyLabel(textAlignment: .left)
+    let articleDate         = ArticleTitleLabel(textAlignment: .left, fontSize: 14)
+    let articleAuthor       = ArticleTitleLabel(textAlignment: .left, fontSize: 14)
+    let linkButton          = LinkButton()
     
     var newsItem: NewsItem!
     
@@ -60,13 +60,13 @@ class DetailNewsVC: UIViewController {
     }
     
     private func configureSubViews() {
-        articleTitle.text = newsItem.title
-        articleBody.text = newsItem.content
-        articleDate.text = "Published at: \(newsItem.publishedAt)"
+        articleTitle.text   = newsItem.title
+        articleBody.text    = newsItem.content
+        articleDate.text    = "Published at: \(newsItem.publishedAt)"
         
-        title = newsItem.source.name ?? "Article"
-        if let author = newsItem.author { articleAuthor.text = "Author: \(author)"}
-        if let url = newsItem.urlToImage { articleImageView.downloadImage(fromURL: url) }
+        title               = newsItem.source.name ?? "Article"
+        if let author       = newsItem.author { articleAuthor.text = "Author: \(author)"}
+        if let url          = newsItem.urlToImage { articleImageView.downloadImage(fromURL: url) }
         
         
     }

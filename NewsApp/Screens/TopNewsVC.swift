@@ -13,10 +13,13 @@ class TopNewsVC: DataLoadingVC {
     enum Section { case main }
     
     var news: [NewsItem] = []
-    var page = 1
-    let pageSize = 15
-    let timeInterval = 5.0
-    var isTimerActive = true
+    
+    var page            = 1
+    let pageSize        = 15
+    
+    let timeInterval    = 5.0
+    var isTimerActive   = true
+    
     var hasMoreArticles = true
     var isLoading       = false
     
@@ -55,8 +58,8 @@ class TopNewsVC: DataLoadingVC {
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createTwoColumnFlowLayout(in: view))
         view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.backgroundColor = .systemBackground
+        collectionView.delegate         = self
+        collectionView.backgroundColor  = .systemBackground
         collectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.reuseID)
     }
     
@@ -149,8 +152,8 @@ class TopNewsVC: DataLoadingVC {
     }
     
     @objc func updateButtonTapped() {
-        news = []
-        page = 1
+        news            = []
+        page            = 1
         hasMoreArticles = true
         getNews()
     }
@@ -162,7 +165,7 @@ extension TopNewsVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let article = news[indexPath.item]
-        let destVC          = DetailNewsVC()
+        let destVC  = DetailNewsVC()
         destVC.set(article: article)
         
         navigationController?.pushViewController(destVC, animated: true)
