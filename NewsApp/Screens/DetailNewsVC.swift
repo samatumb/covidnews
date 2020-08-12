@@ -26,7 +26,8 @@ class DetailNewsVC: UIViewController {
         super.viewDidLoad()
         configureViewControllers()
         configureScrollView()
-        configure()
+        contentView.addSubviews(articleImageView, articleTitle, articleDate, articleAuthor, articleBody, linkButton)
+        //configure()
         configureLinkButton()
     }
     
@@ -57,6 +58,7 @@ class DetailNewsVC: UIViewController {
     func set(article: NewsItem) {
         newsItem = article
         configureSubViews()
+        configure()
     }
     
     private func configureSubViews() {
@@ -67,12 +69,11 @@ class DetailNewsVC: UIViewController {
         title               = newsItem.source.name ?? "Article"
         if let author       = newsItem.author { articleAuthor.text = "Author: \(author)"}
         if let url          = newsItem.urlToImage { articleImageView.downloadImage(fromURL: url) }
-        
-        
     }
     
     private func configure() {
-        contentView.addSubviews(articleImageView, articleTitle, articleDate, articleAuthor, articleBody, linkButton)
+        
+        //articleImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 12
         
@@ -80,7 +81,7 @@ class DetailNewsVC: UIViewController {
             articleImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             articleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             articleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            articleImageView.heightAnchor.constraint(equalToConstant: 300),
+            articleImageView.heightAnchor.constraint(equalToConstant: articleImageView.getRatioHeight(superWidth: view.bounds.size.width)),
             
             
             articleTitle.topAnchor.constraint(equalTo: articleImageView.bottomAnchor, constant: padding),
@@ -133,3 +134,5 @@ class DetailNewsVC: UIViewController {
         }
     }
 }
+
+

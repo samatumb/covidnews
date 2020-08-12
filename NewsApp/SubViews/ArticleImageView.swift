@@ -29,13 +29,13 @@ class ArticleImageView: UIImageView {
     
     
     private func configure() {
-        contentMode             = isRounded ? .scaleAspectFill : .scaleAspectFill
+        contentMode             = isRounded ? .scaleAspectFit : .scaleAspectFit
         if isRounded {
             layer.cornerRadius  = 8
             layer.borderWidth   = 1
             layer.borderColor   = UIColor.gray.cgColor
         }
-        clipsToBounds           = true
+        //clipsToBounds           = true
         image                   = placeholderImage
         backgroundColor         = UIColor.systemGray
         translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +43,16 @@ class ArticleImageView: UIImageView {
         
     }
     
+    func getRatioHeight(superWidth: CGFloat) ->CGFloat {
+        if let image = image {
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            print(imageHeight)
+            return superWidth * imageHeight / imageWidth
+        } else {
+            return 300
+        }
+    }
     
     func downloadImage(fromURL url: String) {
         NetworkManager.shared.downloadImage(from: url) { [weak self] image in
