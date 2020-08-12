@@ -13,7 +13,6 @@
 - UICollectionView / UITableView
 - Web API request / JSON parsing
 - Web Image downloading
-- Background and onTap sounds
 - 7+ Custom Views (custom Alert)
 - SafariServives
 - Original Flat Design 🥇
